@@ -1,0 +1,55 @@
+<div
+  class="flex flex-col items-center justify-center min-h-screen p-4 bg-gradient-to-r text-black"
+>
+  <div class="text-2xl font-semibold mb-4">
+    Current Count: {{ count$ | async | json }}
+  </div>
+  <div class="flex space-x-4">
+    <button
+      class="px-6 py-2 bg-green-500 rounded-lg hover:bg-green-600 focus:outline-none focus:ring-4 focus:ring-green-300 transition duration-300 ease-in-out"
+      (click)="increment()"
+    >
+      Increment
+    </button>
+    <button
+      class="px-6 py-2 bg-yellow-500 rounded-lg hover:bg-yellow-600 focus:outline-none focus:ring-4 focus:ring-yellow-300 transition duration-300 ease-in-out"
+      (click)="decrement()"
+    >
+      Decrement
+    </button>
+    <button
+      class="px-6 py-2 bg-red-500 rounded-lg hover:bg-red-600 focus:outline-none focus:ring-4 focus:ring-red-300 transition duration-300 ease-in-out"
+      (click)="reset()"
+    >
+      Reset Counter
+    </button>
+  </div>
+  <div class="flex space-x-4 mt-8">
+    <input
+      type="number"
+      [(ngModel)]="incrementInput"
+      placeholder="Enter a number"
+      class="px-4 py-2 rounded-lg text-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300 transition duration-300 ease-in-out border"
+    />
+    <button
+      class="px-6 py-2 bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-300 transition duration-300 ease-in-out"
+      (click)="incrementCounterBy()"
+    >
+      Increase By
+    </button>
+  </div>
+  <div class="flex space-x-4 mt-8">
+    <input
+      type="number"
+      [(ngModel)]="decrementInput"
+      placeholder="Enter a number"
+      class="px-4 py-2 rounded-lg text-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300 transition duration-300 ease-in-out border"
+    />
+    <button
+      class="px-6 py-2 bg-orange-500 rounded-lg hover:bg-orange-600 focus:outline-none focus:ring-4 focus:ring-orange-300 transition duration-300 ease-in-out"
+      (click)="decrementCounterBy()"
+    >
+      Decrease By
+    </button>
+  </div>
+</div>
