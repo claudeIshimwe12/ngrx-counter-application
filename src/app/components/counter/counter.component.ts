@@ -7,8 +7,8 @@ import {
   increment,
   incrementBy,
   reset,
-} from '../../store/counter.actions';
-import { selectCounter } from '../../store/counter.selector';
+} from '../../store/counter/counter.actions';
+import { selectCounter } from '../../store/counter/counter.selector';
 import { Count } from '../../models/count.interface';
 
 @Component({
@@ -18,8 +18,8 @@ import { Count } from '../../models/count.interface';
 })
 export class CounterComponent {
   count$: Observable<number>;
-  incrementInput!: number;
-  decrementInput!: number;
+  incrementInput: number | undefined;
+  decrementInput!: number | undefined;
   constructor(private store: Store<{ count: Count }>) {
     this.count$ = this.store.select((state) => state.count.count);
   }
@@ -41,10 +41,12 @@ export class CounterComponent {
   incrementCounterBy() {
     if (!this.incrementInput) return;
     this.store.dispatch(incrementBy({ value: this.incrementInput }));
+    this.incrementInput = undefined;
   }
   decrementCounterBy() {
     if (!this.decrementInput) return;
 
     this.store.dispatch(decrementBy({ value: this.decrementInput }));
+    this.decrementInput = undefined;
   }
 }

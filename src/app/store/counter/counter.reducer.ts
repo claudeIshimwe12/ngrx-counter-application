@@ -7,7 +7,7 @@ import {
   decrementBy,
 } from './counter.actions';
 import { count } from 'rxjs';
-import { Count } from '../models/count.interface';
+import { Count } from '../../models/count.interface';
 
 export const initialState: Count = {
   count: 0,

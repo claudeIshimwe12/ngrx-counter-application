@@ -1,27 +1,66 @@
-# Ngrx
+# NgRx Counter Application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.6.
+This project is a simple Angular application that implements a counter using NgRx for state management. The counter application allows users to increment, decrement, or adjust the counter value by a specified amount using an input field.
 
-## Development server
+## Table of Contents
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Technologies Used](#technologies-used)
+- [Contributing](#contributing)
 
-## Code scaffolding
+## Features
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Increment**: Users can increase the counter value by clicking the "Increment" button.
+- **Decrement**: Users can decrease the counter value by clicking the "Decrement" button.
+- **Adjust by Amount**: Users can input a specific value and increase or decrease the counter by that amount using the respective buttons.
 
-## Build
+## Installation
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+To run this project locally, follow these steps:
 
-## Running unit tests
+1. **Clone the repository**:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+   ```bash
+   git clone https://github.com/your-username/ngrx-counter-app.git
+   cd ngrx-counter-app
+   ```
 
-## Running end-to-end tests
+2. **Install dependencies**:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+   ```bash
+   npm install
+   ```
 
-## Further help
+3. **Run the development server**:
+   ```bash
+   ng serve
+   ```
+   The application will be available at `http://localhost:4200/`.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Usage
+
+Once the application is running:
+
+1. Click "Increment" to increase the counter by 1.
+2. Click "Decrement" to decrease the counter by 1.
+3. Enter a value in the input field and click "Increase by Amount" or "Decrease by Amount" to adjust the counter by the specified value.
+
+## Technologies Used
+
+- **Angular**: A framework for building dynamic web applications.
+- **NgRx**: A state management library for Angular, inspired by Redux.
+- **TypeScript**: A statically typed superset of JavaScript.
+- **RxJS**: A library for reactive programming using observables.
+- **Tailwind CSS**: A utility-first CSS framework for styling.
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Commit your changes (`git commit -m 'Add a new feature'`).
+4. Push to the branch (`git push origin feature-branch`).
+5. Create a Pull Request.
