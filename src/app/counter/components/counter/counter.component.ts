@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { select, Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { map, Observable } from 'rxjs';
 import {
   decrement,
   decrementBy,
@@ -8,8 +8,11 @@ import {
   incrementBy,
   reset,
 } from '../../store/counter/counter.actions';
-import { selectCounter } from '../../store/counter/counter.selector';
-import { Count } from '../../models/count.interface';
+import { AppState } from '../../../app.interface';
+import {
+  loadHistory,
+  undo,
+} from '../../store/counter-history/counter-history.actions';
 
 @Component({
   selector: 'app-counter',
@@ -18,22 +21,27 @@ import { Count } from '../../models/count.interface';
 })
 export class CounterComponent {
   count$: Observable<number>;
+  history$: Observable<number[]>;
   incrementInput: number | undefined;
   decrementInput!: number | undefined;
-  constructor(private store: Store<{ count: Count }>) {
-    this.count$ = this.store.select((state) => state.count.count);
+  constructor(private store: Store<AppState>) {
+    this.count$ = this.store.select((state) => state.counter.count);
+    this.history$ = this.store.select((state) => state.counterHistory.history);
   }
 
   increment() {
     this.store.dispatch(increment());
+    this.store.dispatch(loadHistory({ value: 1 }));
   }
 
   decrement() {
     this.store.dispatch(decrement());
+    this.store.dispatch(loadHistory({ value: -1 }));
   }
 
   reset() {
     this.store.dispatch(reset());
+    this.store.dispatch(loadHistory({ value: 0 }));
   }
   double() {
     this.store.dispatch(incrementBy({ value: 2 }));
@@ -41,12 +49,19 @@ export class CounterComponent {
   incrementCounterBy() {
     if (!this.incrementInput) return;
     this.store.dispatch(incrementBy({ value: this.incrementInput }));
+    this.store.dispatch(loadHistory({ value: this.incrementInput }));
     this.incrementInput = undefined;
   }
   decrementCounterBy() {
     if (!this.decrementInput) return;
 
     this.store.dispatch(decrementBy({ value: this.decrementInput }));
+    this.store.dispatch(loadHistory({ value: -this.decrementInput }));
+
     this.decrementInput = undefined;
+  }
+  undoLastOperation() {
+    this.store.dispatch(undo());
+    this.count$ = this.history$.pipe(map((data) => data[data.length - 1] ?? 0));
   }
 }

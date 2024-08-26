@@ -6,24 +6,23 @@ import {
   incrementBy,
   decrementBy,
 } from './counter.actions';
-import { count } from 'rxjs';
-import { Count } from '../../models/count.interface';
+import { CounterState } from '../../models/count.interface';
 
-export const initialState: Count = {
+export const initialState: CounterState = {
   count: 0,
 };
 
 export const counterReducer = createReducer(
   initialState,
   on(increment, (state) => ({ ...state, count: state.count + 1 })),
-  on(decrement, (state) => ({ ...state, count: state.count - 1 })),
+  on(decrement, (state) => ({ ...state, count: Math.max(state.count - 1, 0) })),
   on(incrementBy, (state, actions) => ({
     ...state,
     count: state.count + actions.value,
   })),
   on(decrementBy, (state, actions) => ({
     ...state,
-    count: state.count - actions.value,
+    count: Math.max(state.count - actions.value, 0),
   })),
   on(reset, (state) => initialState)
 );
