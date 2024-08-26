@@ -9,5 +9,6 @@ export const decrementBy = createAction(
   '[Counter Component] decrementBy',
   props<{ value: number }>()
 );
+export const updateOnUndo = createAction('[Counter Component] updateOnUndo');
 export const decrement = createAction('[Counter Component] Decrement');
 export const reset = createAction('[Counter Component] Reset');
