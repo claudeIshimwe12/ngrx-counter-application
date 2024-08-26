@@ -2,6 +2,8 @@
 
 This project is a simple Angular application that implements a counter using NgRx for state management. The counter application allows users to increment, decrement, or adjust the counter value by a specified amount using an input field.
 
+### You can follow this link to preview the final look and feel of the final product https://angular-simple-counter-application.netlify.app/
+
 ## Table of Contents
 
 - [Features](#features)
